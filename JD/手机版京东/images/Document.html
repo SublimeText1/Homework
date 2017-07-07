@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://127.0.0.1/ionic-demo/demo.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+</head>
+<body>
+	<ul id="ul1">
+	<li><p>张三</p></li><li><p>李四</p></li><li><p>圣保罗</p></li><li><p>安倍</p></li><li><p>特朗普</p></li><li><p>刘德华</p></li><li><p>查理</p></li><li><p>小花</p></li><li><p>普京</p></li><li><p>金三胖</p></li><li><p>土鳖三世</p></li></ul>
+	<script>
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function(){
+			console.log(xhr.readyState);
+			if (xhr.readyState == 4) {
+				
+				console.log(xhr.responseText);
+				var obj = JSON.parse(xhr.responseText);
+				console.log(obj);
+				var objArr = obj.records;
+				// 获取ul
+				var ul = document.getElementById('ul1');
+				// 将数据动态添加到页面，首先要遍历数组
+				for (var i = 0; i < objArr.length; i++) {
+					var li = document.createElement('li');
+					li.innerHTML = "<p>"+objArr[i].Name+"</p>";
+					ul.appendChild(li);
+				}
+			}
+			
+		}
+		xhr.open("get","data/data.php?type=list");
+		xhr.send(null);
+	</script>
+
+<div class="sogoutip" style="z-index: 2147483645; visibility: hidden; display: none;"></div><div class="sogoubottom" id="sougou_bottom" style="display: none;"></div><div id="ext_stophi" style="z-index: 2147483647;"><div class="extnoticebg"></div><div class="extnotice"><h2>关闭提示 <a href="http://127.0.0.1/ionic-demo/demo.html#" title="关闭提示" id="closenotice" class="closenotice">关闭</a></h2><p id="sogouconfirmtxt"></p>  <a id="sogouconfirm" href="http://127.0.0.1/ionic-demo/demo.html#" class="extconfirm">确 认</a> <a id="sogoucancel" href="http://127.0.0.1/ionic-demo/demo.html#" class="extconfirm">取 消</a></div></div><div id="ext_overlay" class="ext_overlayBG" style="display: none; z-index: 2147483646;"></div><iframe class="sogou_sugg_feedbackquan" frameborder="0" scrolling="no" src="./Document_files/yun6.html" style="border: none; display: none; height: 84px; width: 100%; z-index: 2147483645; background: transparent;"></iframe></body></html>
